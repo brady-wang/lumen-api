@@ -16,4 +16,14 @@ class UserRepository extends BaseRepository
 		$res = $this->one();
 		return $res;
 	}
+
+	public function addUser($data)
+	{
+		return User::create($data);
+	}
+
+	public function editUser($data,$id)
+	{
+		return $this->query()->where('id',$id)->update($data);
+	}
 }

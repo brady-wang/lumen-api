@@ -19,21 +19,38 @@ class UserService
 
 	public function queryUserList($where)
 	{
-		$where = ['name'=>"brady"];
 		return $this->userRepository->getList($where);
 	}
 
 	public function getUserInfo($id)
 	{
 		try{
-			ExceptionResult::throwException(ErrorCode::UNAUTHORIZED);
-
 			return $this->userRepository->getById($id);
 
 		} catch (\Exception $e){
 			var_dump($e->getMessage());
 		}
 
+	}
+
+	public function createUser($params)
+	{
+		try{
+			return $this->userRepository->addUser($params);
+
+		} catch (\Exception $e){
+			var_dump($e->getMessage());
+		}
+	}
+
+	public function editUser($params,$id)
+	{
+		try{
+			$affectedRows = $this->userRepository->editUser($params,$id);
+			return ['affectedRows'=>$affectedRows];
+		} catch (\Exception $e){
+			var_dump($e->getMessage());
+		}
 	}
 
 

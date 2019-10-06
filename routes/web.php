@@ -19,5 +19,13 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 	//用户
 	$router->get('/users', "UserController@getUserList");
 	$router->get('/user/info/{id}', "UserController@getUserInfo");
+	$router->post('/user', "UserController@createUser");
+	$router->post('/user/edit/{id}', "UserController@editUser");
+
+
+	//角色管理
+
+
+
 });
 
